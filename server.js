@@ -35,7 +35,9 @@ mongoose
   .catch((err) => console.log('DB Connection rror'));
 
 //routes
-readdirSync('./routes').map((r) => app.use('/api', require(`./routes/${r}`)));
+// readdirSync('./routes').map((r) => app.use('/api', require(`./routes/${r}`)));
+app.use('/api', require('./routes/course.js'));
+app.use('/api', require('./routes/auth.js'));
 
 //csrf
 app.use(csrfProtection);
