@@ -2,6 +2,10 @@ import Course from '../models/course';
 import Completed from '../models/oneCompleted';
 import Certificate from '../models/certificate';
 
+export const test = (req, res) => {
+  res.send('test');
+};
+
 //!Add a course
 export const addCourse = async (req, res) => {
   try {

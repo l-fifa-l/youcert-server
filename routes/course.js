@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  test,
   addCourse,
   getAllCourse,
   getACourse,
@@ -12,6 +13,8 @@ import {
 import { requireSignin } from '../middleware';
 
 const router = express.Router();
+
+router.get('/test', test);
 
 router.post('/addcourse', requireSignin, addCourse);
 router.get('/getallcourse', getAllCourse);
