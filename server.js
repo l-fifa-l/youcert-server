@@ -1,9 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import { readdirSync } from 'fs';
-const morgan = require('morgan');
+import morgan from 'morgan';
+// const morgan = require('morgan');
 import mongoose from 'mongoose';
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
+// const dotenv = require('dotenv');
 import csrf from 'csurf';
 import cookieParser from 'cookie-parser';
 dotenv.config();
