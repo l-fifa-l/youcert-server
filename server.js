@@ -1,3 +1,6 @@
+// These lines make "require" available
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 import express from 'express';
 import cors from 'cors';
 import { readdirSync } from 'fs';
