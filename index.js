@@ -9,11 +9,11 @@ const morgan = require('morgan');
 import mongoose from 'mongoose';
 // import dotenv from 'dotenv';
 const dotenv = require('dotenv');
-import csrf from 'csurf';
+// import csrf from 'csurf';
 import cookieParser from 'cookie-parser';
 dotenv.config();
 
-const csrfProtection = csrf({ cookie: true });
+// const csrfProtection = csrf({ cookie: true });
 
 //middleware
 const app = express();
@@ -40,11 +40,11 @@ app.use('/api', require('./routes/course.js'));
 app.use('/api', require('./routes/auth.js'));
 
 //csrf
-app.use(csrfProtection);
+// app.use(csrfProtection);
 
-app.get('/api/csrf-token', (req, res) => {
-  res.json({ csrfToken: req.csrfToken() });
-});
+// app.get('/api/csrf-token', (req, res) => {
+//   res.json({ csrfToken: req.csrfToken() });
+// });
 
 const port = process.env.PORT || 8000;
 
