@@ -1,19 +1,20 @@
 // These lines make "require" available
 import { createRequire } from 'module';
 // const require = createRequire(import.meta.url);
+
 import express from 'express';
 import cors from 'cors';
 import { readdirSync } from 'fs';
 // import morgan from 'morgan';
 const morgan = require('morgan');
 import mongoose from 'mongoose';
-// import dotenv from 'dotenv';
-const dotenv = require('dotenv');
-// import csrf from 'csurf';
+import dotenv from 'dotenv';
+// const dotenv = require('dotenv');
+import csrf from 'csurf';
 import cookieParser from 'cookie-parser';
 dotenv.config();
 
-// const csrfProtection = csrf({ cookie: true });
+const csrfProtection = csrf({ cookie: true });
 
 //middleware
 const app = express();
@@ -35,16 +36,16 @@ mongoose
   .catch((err) => console.log('DB Connection rror'));
 
 //routes
-// readdirSync('./routes').map((r) => app.use('/api', require(`./routes/${r}`)));
-app.use('/api', require('./routes/course.js'));
-app.use('/api', require('./routes/auth.js'));
+readdirSync('./routes').map((r) => app.use('/api', require(`./routes/${r}`)));
+// app.use('/api', require('./routes/course.js'));
+// app.use('/api', require('./routes/auth.js'));
 
-//csrf
-// app.use(csrfProtection);
+csrf;
+app.use(csrfProtection);
 
-// app.get('/api/csrf-token', (req, res) => {
-//   res.json({ csrfToken: req.csrfToken() });
-// });
+app.get('/api/csrf-token', (req, res) => {
+  res.json({ csrfToken: req.csrfToken() });
+});
 
 const port = process.env.PORT || 8000;
 
